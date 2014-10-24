@@ -39,7 +39,7 @@ echo "found $fileCount files"
 # then pulls out the table name, start and end date to get a total elapsed time to report
 
 # The sed statement strips off the leading spaces from wc
-totalCount=$(egrep "new session: will sync" $listFiles | wc -l | sed 's/^ *//')
+totalCount=$(egrep -c "new session: will sync" $listFiles)
 
 # We look for the string in all files, then use awk to find the repair session id
 for i in $(egrep "new session: will sync" $listFiles | egrep -i  new | sed -e 's/^.*\[repair \(#.*\)\] new .*$/\1/g'); do
